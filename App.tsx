@@ -1,11 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import _tarefa from './types/_tarefas';
 
 export default function App() {
+
+  const [texto,setTexto] = useState<string>('');
+  const [tarefas, setTarefas] = useState<_tarefa[]>([]);
+
+  function adicionarTarefa(){
+    if(texto == ''){
+      alert("Insira um texto");
+      return;
+    }
+    let tarefa: _tarefa = {
+
+      
+      id: tarefas.length +1,
+      texto: texto
+    };
+    setTarefas([...tarefas, tarefa])
+  }
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <TextInput style={styles.input} value={texto} onChangeText={setTexto}/>
+      <Button title='Adicionar Tarefa'/>
     </View>
   );
 }
@@ -17,4 +37,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  input:{
+    borderWidth: 1,
+  }
 });
