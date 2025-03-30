@@ -1,7 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import _tarefa from './types/_tarefas';
+import React from 'react';
+import Tarefa from './components/Tarefa';
 
 export default function App() {
 
@@ -14,18 +16,28 @@ export default function App() {
       return;
     }
     let tarefa: _tarefa = {
-
-      
       id: tarefas.length +1,
-      texto: texto
-    };
-    setTarefas([...tarefas, tarefa])
+      texto
+    }
+    setTarefas([...tarefas, tarefa]);
+  }
+  function mostrarTarefas(){
+    return tarefas.map(t => <Tarefa key={t.id} dados={t} handleDeletePress={excluir}/>);
+  }
+
+  function excluir(id:number){
+    let f = tarefas.filter(t => t.id != id);
+    setTarefas(f);
   }
 
   return (
     <View style={styles.container}>
       <TextInput style={styles.input} value={texto} onChangeText={setTexto}/>
-      <Button title='Adicionar Tarefa'/>
+      <Button 
+        title='Adicionar Tarefa'
+        onPress={adicionarTarefa}
+      />
+      {mostrarTarefas()}
     </View>
   );
 }
