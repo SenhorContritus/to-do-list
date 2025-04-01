@@ -31,23 +31,30 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <TextInput style={styles.input} value={texto} onChangeText={setTexto}/>
-      <Button 
-        title='Adicionar Tarefa'
-        onPress={adicionarTarefa}
-      />
-      {mostrarTarefas()}
+    <View style={styles.main}>
+      <View style={styles.container}>
+        <TextInput style={styles.input} value={texto} onChangeText={setTexto}/>
+        <Button 
+          title='Adicionar Tarefa'
+          onPress={adicionarTarefa}
+        />
+        {mostrarTarefas()}
+      </View>
+      
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  main: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  container:{
+    display:'flex',
+    backgroundColor: '#f',
   },
   input:{
     borderWidth: 1,
