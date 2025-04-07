@@ -82,7 +82,7 @@ export default function App() {
             }
           >
             <Text style={[{
-              color: "rgb(235, 218, 209)",
+              color: "rgb(185, 86, 32)",
               textAlign: "center",
               justifyContent: "center",
             }]}>
@@ -126,6 +126,9 @@ export default function App() {
           </View>
         </View>
       </View>
+      <Text style={[{fontSize: 11, color:'rgb(185, 86, 32)'}]}>
+        V1.0
+      </Text>
     </View>
   );
 }
@@ -166,9 +169,10 @@ const styles = StyleSheet.create({
   },
   scrollContainer:{
     flexDirection: "row",
-    paddingVertical: 10,
-    height: 240,
-    
+    padding: 10,
+    height: 220,
+    backgroundColor:'rgb(219, 138, 95)',
+    borderRadius: 6,
   },
   scrollOutside:{
     height:"100%",
